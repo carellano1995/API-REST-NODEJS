@@ -7,7 +7,7 @@ const playerSchema = new Schema(
   {
     name: { type: String },
     rut: { type: String },
-    enabled: { type: Boolean }
+    enabled: { type: Boolean, default: true }
   },
   { timestamps: true }
 );
