@@ -1,0 +1,36 @@
+{>"layouts/masterError" /}
+
+{<title}
+404 | Documenta
+{/title}
+
+{<custom-css}
+
+{/custom-css}
+
+{<body-class}
+page-404
+{/body-class}
+
+{<body}
+
+  <div class="header">
+    <a href="/login" class="logo">
+      <strong>Documenta Minería</strong>
+    </a> <!-- / .logo -->
+  </div> <!-- / .header -->
+
+  <div class="error-code">404</div>
+
+  <div class="error-text">
+    <span class="oops">UPS!</span><br>
+    <span class="hr"></span>
+    <br>
+    ¡ESTA PÁGINA NO EXISTE!
+  </div> <!-- / .error-text -->
+
+{/body}
+
+{<custom-scripts}
+
+{/custom-scripts}

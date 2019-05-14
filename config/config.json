@@ -1,0 +1,125 @@
+{
+  "i18n": {
+    "contentPath": "path:./locales",
+    "fallback": "en-US"
+  },
+  "express": {
+    "view cache": true,
+    "view engine": "js",
+    "views": "path:./.build/templates",
+    "compress": true
+  },
+  "view engines": {
+    "js": {
+      "module": "engine-munger",
+      "renderer": {
+        "method": "js",
+        "arguments": [
+          {
+            "cache": true
+          },
+          {
+            "views": "config:express.views",
+            "view engine": "config:express.view engine",
+            "specialization": "config:specialization",
+            "i18n": "config:i18n"
+          }
+        ]
+      }
+    }
+  },
+
+  "middleware": {
+    "session": {
+      "enabled": true,
+      "priority": 100,
+      "module": {
+        "name": "path:./middleware/mongo-session",
+        "arguments": [
+          {
+            "secret": "keyboard cat",
+            "cookie": {
+              "path": "/",
+              "httpOnly": true,
+              "maxAge": 86400000
+            },
+            "resave": false,
+            "saveUninitialized": false,
+            "proxy": null,
+            "unset": "destroy"
+          }
+        ]
+      }
+    },
+
+    "json": {
+      "enabled": true,
+      "priority": 60,
+      "module": {
+        "name": "body-parser",
+        "method": "json",
+        "arguments": [
+          {
+            "limit": "15mb"
+          }
+        ]
+      }
+    },
+
+    "compress": {
+      "enabled": true,
+      "priority": 10,
+      "module": "compression"
+    },
+    "jwtauth": {
+      "enabled": true,
+      "priority": 70,
+      "route": "/api/secure",
+      "module": {
+        "name": "path:./middleware/jwt-auth",
+        "arguments": ["config:jwt"]
+      }
+    },
+
+    "static": {
+      "enabled": true,
+      "priority": 40,
+      "module": {
+        "name": "serve-static",
+        "arguments": [
+          "path:./.build",
+          {
+            "maxage": 36000000000
+          }
+        ]
+      }
+    },
+
+    "router": {
+      "enabled": true,
+      "priority": 120,
+      "module": {
+        "arguments": [
+          {
+            "directory": "path:./controllers"
+          }
+        ]
+      }
+    },
+    "appsec": {
+      "enabled": true,
+      "priority": 110,
+      "module": {
+        "name": "lusca",
+        "arguments": [
+          {
+            "csrf": false,
+            "p3p": false,
+            "xframe": "SAME-ORIGIN",
+            "csp": false
+          }
+        ]
+      }
+    }
+  }
+}

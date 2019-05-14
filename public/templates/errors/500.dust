@@ -1,0 +1,36 @@
+{>"layouts/masterError" /}
+
+{<title}
+500 | Documenta
+{/title}
+
+{<custom-css}
+
+{/custom-css}
+
+{<body-class}
+page-500
+{/body-class}
+
+{<body}
+
+  <div class="header">
+    <a href="/login" class="logo">
+      <strong>Documenta Minería</strong>
+    </a> <!-- / .logo -->
+  </div> <!-- / .header -->
+
+  <div class="error-code">500</div>
+
+  <div class="error-text">
+    <span class="oops">Ups!</span><br>
+    <span class="hr"></span>
+    <br>
+    ¡Algo salió mal!
+  </div> <!-- / .error-text -->
+
+{/body}
+
+{<custom-scripts}
+
+{/custom-scripts}

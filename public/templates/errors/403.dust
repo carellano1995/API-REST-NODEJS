@@ -1,0 +1,36 @@
+{>"layouts/masterError" /}
+
+{<title}
+403 | Documenta
+{/title}
+
+{<custom-css}
+
+{/custom-css}
+
+{<body-class}
+page-500
+{/body-class}
+
+{<body}
+
+  <div class="header">
+    <a href="/dashboard" class="logo">
+      <strong>Documenta Minería</strong>
+    </a> <!-- / .logo -->
+  </div> <!-- / .header -->
+
+  <div class="error-code">403</div>
+
+  <div class="error-text">
+    <span class="oops">Hey!</span><br>
+    <span class="hr"></span>
+    <br>
+    ¡Acceso prohibido!
+  </div> <!-- / .error-text -->
+
+{/body}
+
+{<custom-scripts}
+
+{/custom-scripts}
