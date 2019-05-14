@@ -3,14 +3,15 @@ API-REST-NODEJS
 
 Api rest with NodeJS
 
-![spring|java](https://spring.io/img/spring-by-pivotal.png)
+![spring|java](https://cdn-images-1.medium.com/max/1200/1*fsseXIPGEhwmg6kfgXyIjA.jpeg)
 
 ## Requirements
 
-- Java 1.8 +
+- NodeJS 10+
+- NPM
 - PostMan
-- Visual Studio Code or another similar IDE (STS, NetBeans, etc ...)
-- MySql
+- Visual Studio Code or another similar IDE (Sublime, Atom, etc ...)
+- Mongo DB
 - GIT
 - Terminal (ITERM con plugins oh my zsh)
 
@@ -20,15 +21,14 @@ Some plugins that use in Visual Studio Code are:
 
 | Plugin                                    |
 | ----------------------------------------- |
-| Spring boot Tools                         |
-| Spring boot Dashboard                     |
-| Spring boot extension Pack                |
-| Maven for java                            |
-| Language support for java                 |
-| Java extension pack                       |
-| Java Test Runner vscjava.vscode-java-test |
+| Trailing spaces                           |
+| Prettier - Code formatter                 |
+| Path intellisense                         |
+| Prettier - Code formatter                 |
+| NPM                                       |
+| Code metrics                              |
 
-## Set up MySQL
+## Set up MONGO DB
 
 ```sh
 $ mysql -u root -p
@@ -38,15 +38,15 @@ $ > GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost';
 
 ### Installation
 
-API-REST-SPRING requires [Java](https://www.java.com/es) 1.8+ to run.
+API-REST-NODEJS requires [Node JS](https://nodejs.org/es/) 10+ to run.
 
 Install the dependencies and devDependencies and start the server.
 
 ```sh
-$ git clone https://github.com/carellano1995/API-REST-SPRING.git
-$ cd API-REST-SPRING/
-$ mvn package
-$ mvn spring-boot:run
+$ git clone https://github.com/carellano1995/API-REST-NODEJS.git
+$ cd API-REST-NODEJS/
+$ npm install
+$ node server.js
 ```
 
 # Controllers
@@ -58,7 +58,7 @@ This endpoint will return a list with all the paged records.
 #### Request
 
 ```json
-url: http://localhost:8080/players
+url: http://localhost:8000/players
 method: GET
 headers : {Content-Type : application/json}
 ```
@@ -67,32 +67,12 @@ If successful, it will return a status **200** and the following JSON:
 
 ```json
 {
-  "content": [],
-  "pageable": {
-    "sort": {
-      "sorted": false,
-      "unsorted": true,
-      "empty": true
-    },
-    "offset": 0,
-    "pageSize": 20,
-    "pageNumber": 0,
-    "paged": true,
-    "unpaged": false
-  },
-  "totalPages": 0,
-  "totalElements": 0,
-  "last": true,
-  "size": 20,
-  "numberOfElements": 0,
-  "number": 0,
-  "sort": {
-    "sorted": false,
-    "unsorted": true,
-    "empty": true
-  },
-  "first": true,
-  "empty": true
+    "results": [
+    ],
+    "count": 0,
+    "pageSize": 10,
+    "currentPage": 1,
+    "pageCount": 1
 }
 ```
 
@@ -101,7 +81,7 @@ If successful, it will return a status **200** and the following JSON:
 This endpoint will return a list with all records.
 
 ```json
-url: http://localhost:8080/players/all
+url: http://localhost:8000/players/all
 method: GET
 headers : {Content-Type : application/json}
 ```
@@ -132,9 +112,12 @@ If successful, it will return a status **200** and the following JSON:
 
 ```json
 {
-  "id": 1,
-  "name": "Cristiano Ronaldo",
-  "rut": "20320983-5"
+    "_id": "5cda2bc2d30edff86b618d55",
+    "name": "Cristiano Ronaldo",
+    "rut": "20320983-5",
+    "createdAt": "2019-05-14T02:45:22.226Z",
+    "updatedAt": "2019-05-14T02:45:22.226Z",
+    "__v": 0
 }
 ```
 
@@ -145,7 +128,7 @@ This endpoint will allow to update a player.
 #### Request
 
 ```json
-url: http://localhost:8080/players/{id}
+url: http://localhost:8000/players/{id}
 method: PUT
 headers : {Content-Type : application/json}
 body: {
@@ -171,7 +154,7 @@ This endpoint will allow to eliminate a player.
 #### Request
 
 ```json
-url: http://localhost:8080/players/{id}
+url: http://localhost:8000/players/{id}
 method: DELETE
 headers : {Content-Type : application/json}
 ```
