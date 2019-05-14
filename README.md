@@ -31,9 +31,10 @@ Some plugins that use in Visual Studio Code are:
 ## Set up MONGO DB
 
 ```sh
-$ mysql -u root -p
-$ > CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-$ > GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost';
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" (install homebrew)
+$ brew tap mongodb/brew
+$ brew install mongodb-community@4.0
+$ mongod
 ```
 
 ### Installation
